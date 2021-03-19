@@ -18,8 +18,24 @@
 - 1 model notebook
 3. README.md file
 ### Data Dictonary
-
+| Feature | Description | Data Type |
+|-|-|-|
+| bathroomcnt | Number of bathrooms in home including fractional bathrooms |  |
+| bedroomcnt | Number of bedrooms in home |  |
+| buildingqualitytypeid | Overall assessment of condition of the building from best (lowest) to worst (highest) |  |
+| calculatedfinishedsquarefeet | Calculated total finished living area of the home |  |
+| fips | Federal Information Processing Standard code |  |
+| parcelid | Unique identifier for parcels (lots) |  |
+| regionidneighborhood | Neighborhood in which the property is located |  |
+| unitcnt | Number of units the structure is built into (i.e. 2 = duplex, 3 = triplex, etc...) |  |
+| yearbuilt | The Year the principal residence was built |  |
+| taxvaluedollarcnt | The total tax assessed value of the parcel |  |
+| taxamount | The total property tax assessed for that assessment year |  |
 ## Hypotheses
+### Initial Hypotheses (Prepare Phase)
+1. Does square footage have a positive relationship with home value?
+2. 
+3.
 
 ## Project Planning
 ### [Zillow Project Plan Board](www.trello.com)
