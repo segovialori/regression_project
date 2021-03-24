@@ -34,9 +34,9 @@ def explore_univariate(train, cat_vars, quant_vars):
         
 def explore_bivariate(train, target, cat_vars, quant_vars):
     for cat in cat_vars:
-        explore_bivariate_categorical(train, 'target', cat)
+        explore_bivariate_categorical(train, target, cat)
     for quant in quant_vars:
-        explore_bivariate_quant(train, 'target', quant)
+        explore_bivariate_quant(train, target, quant)
 
 def explore_multivariate(train, target, cat_vars, quant_vars):
     '''

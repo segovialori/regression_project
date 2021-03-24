@@ -96,7 +96,7 @@ def clean_zillow(df):
     df['latitude'] = df.latitude.astype('int')
     df['longitude'] = df.longitude.astype('int')
     df['property_age'] = df.property_age.astype('int')
-
+    df = df.set_index("parcelid")
     #rename columns
     df = df.rename(columns={"bedroomcnt": "bedrooms", 
                             "bathroomcnt": "bathrooms", 
@@ -107,7 +107,7 @@ def clean_zillow(df):
 
     return df
 
-
+#generic split
 def split_data(df):
     '''
     split our data,
@@ -117,6 +117,33 @@ def split_data(df):
     train_val, test = train_test_split(df, train_size=0.8, random_state=123)
     train, validate = train_test_split(train_val, train_size=0.7, random_state=123)
     return train, validate, test
+
+#split with 
+def train_validate_test_split(df, target, seed):
+    '''
+    spilts our data  into train, validate, test
+    by taking in a dataframe and dividing into
+    separate
+    '''
+    # Train, Validate, and test
+    train_and_validate, test = train_test_split(
+        df, test_size=0.2, random_state=seed)
+    train, validate = train_test_split(
+        train_and_validate,
+        test_size=0.3,
+        random_state=seed)
+    
+    # Split with X and y
+    X_train = train.drop(columns=[target])
+    y_train = train[target]
+    
+    X_validate = validate.drop(columns=[target])
+    y_validate = validate[target]
+    
+    X_test = test.drop(columns=[target])
+    y_test = test[target]
+    
+    return train, validate, test, X_train, y_train, X_validate, y_validate, X_test, y_test   
 
 #wrangle: acquire and prep data set
 def wrangle_zillow():
@@ -161,3 +188,5 @@ def Min_Max_Scaler(X_train, X_validate, X_test):
     X_test_scaled = pd.DataFrame(scaler.transform(X_test), index = X_test.index, columns = X_test.columns)
     
     return scaler, X_train_scaled, X_validate_scaled, X_test_scaled
+
+
